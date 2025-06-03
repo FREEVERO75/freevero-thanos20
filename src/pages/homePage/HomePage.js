@@ -6,8 +6,11 @@ import {
   faRightToBracket,
   faUserPlus,
 } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom';
+import { LOGIN_ROUTE, REGISTER_ROUTE } from '../../constants/paths';
 
 export const HomePage = () => {
+  const navigate = useNavigate();
   return (
     <MainLayout>
       <Row>
@@ -31,11 +34,13 @@ export const HomePage = () => {
               variant='success'
               icon={faUserPlus}
               label='Κάνε εγγραφή τώρα!'
+              onClick={() => navigate(REGISTER_ROUTE)}
             />
             <Button
               variant='secondary'
               icon={faRightToBracket}
               label='Σύνδεση'
+              onClick={() => navigate(LOGIN_ROUTE)}
             />
           </div>
         </Col>

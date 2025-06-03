@@ -1,1 +1,4 @@
-export const MAIN_COLOR = 'rgb(250, 245, 242)';
+export const MAIN_COLOR = 'var(--light-gray)';
+export const WHITE = 'var(--white)';
+export const RED = 'var(--red)';
+export const BLUE = 'var(--blue)';
