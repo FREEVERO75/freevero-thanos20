@@ -25,13 +25,13 @@ export const ConfirmationModal = ({
           label='Όχι'
           variant='danger'
           onClick={handleClose}
-          style={{ width: '10rem' }}
+          style={{ width: '7rem' }}
         />
         <Button
           label='Ναι'
           variant='success'
           onClick={handleSave}
-          style={{ width: '10rem' }}
+          style={{ width: '7rem' }}
         />
       </Modal.Footer>
     </Modal>

@@ -14,15 +14,19 @@ import {
   getAllUserService,
 } from '../../services/userService';
 import { useToast } from '../../contexts/ToastContext';
-import { width } from '@fortawesome/free-solid-svg-icons/faUserAlt';
 import { BLUE_DARK, CIEL } from '../../constants/colors';
 import { ConfirmationModal } from '../../modals/confirmationModal/ConfirmationModal';
 import { DropDownMenu } from '../../components/dropDownMenu/DropDownMenu';
+import { AddUserModal } from '../../modals/addUserModal/AddUserModal';
+import { EditUserModal } from '../../modals/editUserModal/EditUserModal';
 
 export const UsersPage = () => {
   const [users, setUsers] = useState([]);
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
+  const [showAddUserModal, setShowAddUserModal] = useState(false);
+  const [showEditUserModal, setShowEditUserModal] = useState(false);
   const [selectedUser, setSelectedUser] = useState(null);
+  const [refreshFlag, setRefreshFlag] = useState(false);
   const { showSuccess, showError } = useToast();
 
   // delete user
@@ -31,10 +35,31 @@ export const UsersPage = () => {
     setShowConfirmationModal(true);
   };
 
+  // edit user
+  const editUser = row => {
+    setSelectedUser(row);
+    setShowEditUserModal(true);
+  };
+
   // close modal
   const handleCloseConfirmationModal = () => {
     setSelectedUser(null);
     setShowConfirmationModal(false);
+  };
+
+  // show add user modal
+  const handleShowAddUserModal = () => {
+    setShowAddUserModal(true);
+  };
+
+  // close add user modal
+  const handleCloseAddUserModal = () => {
+    setShowAddUserModal(false);
+  };
+
+  // close edit user modal
+  const handleCloseEditUserModal = () => {
+    setShowEditUserModal(false);
   };
 
   // table actions
@@ -43,6 +68,7 @@ export const UsersPage = () => {
       id: 1,
       name: 'Επεξεργασία',
       icon: faEdit,
+      onClick: () => editUser(row),
     },
     {
       id: 2,
@@ -132,6 +158,10 @@ export const UsersPage = () => {
       });
   };
 
+  const changeRefreshFlag = () => {
+    setRefreshFlag(prev => !prev);
+  };
+
   useEffect(() => {
     getAllUserService()
       .then(response => {
@@ -141,7 +171,8 @@ export const UsersPage = () => {
         console.log(error);
         showError();
       });
-  }, []);
+  }, [refreshFlag]);
+
   return (
     <MainLayout className='d-flex justify-content-center'>
       <CardContainer
@@ -162,6 +193,7 @@ export const UsersPage = () => {
               label='Προσθήκη'
               variant='success'
               style={{ width: '10rem' }}
+              onClick={handleShowAddUserModal}
             />
           </Col>
         </Row>
@@ -179,6 +211,17 @@ export const UsersPage = () => {
         title='Διαγραφή χρήστη'
         body='Είστε σίγουροι ότι θέλετε να διαγράψετε το συγκεκριμένο χρήστη;'
         handleSave={() => confirmDeleteUser(selectedUser?.id)}
+      />
+      <AddUserModal
+        show={showAddUserModal}
+        handleClose={handleCloseAddUserModal}
+        changeRefreshFlag={changeRefreshFlag}
+      />
+      <EditUserModal
+        show={showEditUserModal}
+        handleClose={handleCloseEditUserModal}
+        selectedUser={selectedUser}
+        changeRefreshFlag={changeRefreshFlag}
       />
     </MainLayout>
   );

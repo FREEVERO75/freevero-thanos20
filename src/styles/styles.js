@@ -31,4 +31,7 @@ export const MainLayout = styled.div`
   padding: 4rem;
   background: ${MAIN_COLOR};
   box-sizing: border-box;
+  @media (max-width: 576px) {
+    padding: 2rem;
+  }
 `;

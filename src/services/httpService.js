@@ -42,7 +42,7 @@ http.interceptors.response.use(
     if (
       error.response &&
       error.response.status === 401 &&
-      error.response.data.error_code === 103
+      error.response.data.error_code === 104
     ) {
       try {
         const refreshToken = localStorage.getItem('refreshToken');

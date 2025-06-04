@@ -14,7 +14,7 @@ export const HomePage = () => {
   return (
     <MainLayout>
       <Row>
-        <Col className='pt-4' md={7}>
+        <Col className='pt-4' sm={12} md={7}>
           <strong className='lg-font-size'>
             Έχεις scooter ή μηχανάκι που κάθεται;
           </strong>
@@ -33,7 +33,7 @@ export const HomePage = () => {
             <Button
               variant='success'
               icon={faUserPlus}
-              label='Κάνε εγγραφή τώρα!'
+              label='Εγγραφή!'
               onClick={() => navigate(REGISTER_ROUTE)}
             />
             <Button
@@ -44,7 +44,7 @@ export const HomePage = () => {
             />
           </div>
         </Col>
-        <Col md={5}>
+        <Col className='pt-4' sm={12} md={5}>
           <div className='main-image-wrapper'>
             <img className='main-image' src={main_image} alt='main_image' />
           </div>

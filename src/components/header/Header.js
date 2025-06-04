@@ -39,7 +39,6 @@ export const Header = () => {
       icon: faRightFromBracket,
       onClick: () => {
         logout();
-        navigate(LOGIN_ROUTE);
       },
     },
   ];

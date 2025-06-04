@@ -11,6 +11,7 @@ import { validateFields } from '../../utils/utils';
 import { loginService } from '../../services/userService';
 import { useToast } from '../../contexts/ToastContext';
 import { useAuth } from '../../contexts/AuthContext';
+import { width } from '@fortawesome/free-solid-svg-icons/faUserAlt';
 
 export const LoginPage = () => {
   const [formData, setFormData] = useState({
@@ -36,7 +37,6 @@ export const LoginPage = () => {
     }
     loginService(formData)
       .then(response => {
-        showSuccess('Επιτυχής σύνδεση!');
         localStorage.setItem('token', response?.data?.token);
         localStorage.setItem('refreshToken', response?.data?.refreshToken);
         setAuthState(response?.data?.user);
@@ -86,7 +86,12 @@ export const LoginPage = () => {
         </Row>
         <Row className='w-100 d-flex align-items-center justify-content-center'>
           <Col xs={12} md={6}>
-            <Button label='Σύνδεση' icon={faRightToBracket} onClick={login} />
+            <Button
+              label='Σύνδεση'
+              icon={faRightToBracket}
+              onClick={login}
+              style={{ width: '100%' }}
+            />
           </Col>
           <Col xs={12} md={6} className='text-center'>
             <span
