@@ -2,7 +2,8 @@ import styled from 'styled-components';
 import { MAIN_COLOR, WHITE } from '../constants/colors';
 
 export const CardContainer = styled.div`
-  min-height: ${props => props.height || 'auto'};
+  min-height: ${props => props.minHeight || 'auto'};
+  height: ${props => props.height || '50vh'};
   width: ${props => props.width || '70%'};
   background-color: ${props => props.background || WHITE};
   border: 1px solid ${props => props.borderColor || WHITE};

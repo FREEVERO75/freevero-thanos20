@@ -1,8 +1,9 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
+import { setLoaderFunctions } from '../controllers/loaderController';
 
 const LoaderContext = createContext();
 
-export const LoaderProvider = ({ Children }) => {
+export const LoaderProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
 
   const showLoader = () => {
@@ -13,9 +14,13 @@ export const LoaderProvider = ({ Children }) => {
     setLoading(false);
   };
 
+  useEffect(() => {
+    setLoaderFunctions(showLoader, hideLoader);
+  }, []);
+
   return (
     <LoaderContext.Provider value={{ loading, showLoader, hideLoader }}>
-      {Children}
+      {children}
     </LoaderContext.Provider>
   );
 };

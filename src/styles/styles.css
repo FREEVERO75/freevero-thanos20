@@ -4,7 +4,7 @@
   --blue: #1a8aae;
   --light-blue: #1094c0;
   --dark-gray: #a8a7a7;
-  --gray: #c0bbbb;
+  --gray: #cecece;
   --light-gray: rgb(250, 245, 242);
   --white: #fdfcfc;
   --ciel: #c1d0e1;
@@ -43,4 +43,10 @@
 .account-span:hover {
   text-decoration: underline;
   cursor: pointer;
+}
+
+.custom-dropdown-toggle {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
 }

@@ -1,8 +1,11 @@
 import { MoonLoader } from 'react-spinners';
 import { BLUE } from '../../constants/colors';
 import { MainLayout } from '../../styles/styles';
+import { useLoader } from '../../contexts/LoaderContext';
 
 export const Loader = () => {
+  const { loading } = useLoader();
+  if (!loading) return null;
   return (
     <MainLayout
       className='d-flex flex-column align-items-center justify-content-center position-fixed z-3 top-0 start-0 end-0 bottom-0'

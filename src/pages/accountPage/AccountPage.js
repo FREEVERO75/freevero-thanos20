@@ -1,21 +1,18 @@
 import { Col, Row } from 'react-bootstrap';
-import { Logo } from '../../components/logo/Logo';
 import { CardContainer, MainLayout } from '../../styles/styles';
+import { Logo } from '../../components/logo/Logo';
 import { Input } from '../../components/input/Input';
 import { Button } from '../../components/button/Button';
-import { faUserPlus } from '@fortawesome/free-solid-svg-icons';
-import { useNavigate } from 'react-router-dom';
-import { LOGIN_ROUTE } from '../../constants/paths';
-import { useState } from 'react';
+import { faSave } from '@fortawesome/free-solid-svg-icons';
+import { useEffect, useState } from 'react';
 import {
-  isFieldEmpty,
-  validateFields,
-  validatePassword,
-} from '../../utils/utils';
+  getUserDataService,
+  updateUserDataService,
+} from '../../services/userService';
 import { useToast } from '../../contexts/ToastContext';
-import { registerService } from '../../services/userService';
+import { isFieldEmpty, validateFields } from '../../utils/utils';
 
-export const RegisterPage = () => {
+export const AccountPage = () => {
   const [formData, setFormData] = useState({
     name: '',
     surname: '',
@@ -23,23 +20,19 @@ export const RegisterPage = () => {
     username: '',
     mobileNumber: '',
     address: '',
-    password: '',
-    repeatPassword: '',
   });
   const [emptyFields, setEmptyFields] = useState([]);
+  const [refreshFlag, setRefreshFlag] = useState(false);
   const fieldsForValidation = [
     'name',
     'surname',
-    'email',
     'username',
+    'email',
     'mobileNumber',
     'address',
-    'password',
-    'repeatPassword',
   ];
 
   const { showSuccess, showError } = useToast();
-  const navigate = useNavigate();
 
   const handleInputChange = event => {
     setFormData(prevFormData => ({
@@ -48,55 +41,59 @@ export const RegisterPage = () => {
     }));
   };
 
-  const register = () => {
+  const updateUserData = () => {
     setEmptyFields([]);
     const emptyFields = validateFields(formData, fieldsForValidation);
     if (emptyFields.length > 0) {
       setEmptyFields(emptyFields);
-      showError('Συμπληρώστε όλα τα πεδία!');
-      return;
-    }
-    if (!validatePassword(formData.password)) {
-      showError('Ο κωδικός πρόσβασης δε τηρεί τις πρϋποθέσεις!');
-      return;
-    }
-    if (formData.password !== formData.repeatPassword) {
-      showError('Οι κωδικοί πρόσβασης δεν ταιριάζουν!');
+      showError('Συμπληρώστε όλα τα στοιχεία!');
       return;
     }
 
-    registerService(formData)
+    updateUserDataService(formData)
       .then(response => {
         console.log(response);
-        showSuccess('Επιτυχής εγγραφή!');
+        setRefreshFlag(prev => !prev);
+        showSuccess('Επιτυχής αποθήκευση!');
       })
       .catch(error => {
         console.log(error);
-        showError('Κάποιο σφάλμα προέκυψε!');
+        showError();
       });
   };
 
+  useEffect(() => {
+    getUserDataService()
+      .then(response => {
+        setFormData(response?.data);
+      })
+      .catch(error => {
+        console.log(error);
+        showError();
+      });
+  }, [refreshFlag]);
+
   return (
-    <MainLayout className='d-flex align-items-center justify-content-center'>
-      <CardContainer height='50%' padding='2rem'>
+    <MainLayout className='d-flex justify-content-center'>
+      <CardContainer height='50%' width='100%'>
         <Logo />
-        <Row className='w-100 pt-4'>
-          <Col xs={12} md={6}>
+        <Row className='w-100'>
+          <Col xs={12} md={4}>
             <Input
               label='Όνομα'
               name='name'
-              value={formData.name}
+              value={formData?.name}
               onChange={handleInputChange}
               required
               placeholder='Συμπληρώστε το όνομα σας'
               isInvalid={isFieldEmpty('name', emptyFields) && !formData.name}
             />
           </Col>
-          <Col xs={12} md={6}>
+          <Col xs={12} md={4}>
             <Input
               label='Επώνυμο'
               name='surname'
-              value={formData.surname}
+              value={formData?.surname}
               onChange={handleInputChange}
               required
               placeholder='Συμπληρώστε το επώνυμο σας'
@@ -105,25 +102,27 @@ export const RegisterPage = () => {
               }
             />
           </Col>
-        </Row>
-        <Row className='w-100'>
-          <Col xs={12} md={6}>
+          <Col xs={12} md={4}>
             <Input
               label='E-mail'
               name='email'
-              value={formData.email}
+              value={formData?.email}
               onChange={handleInputChange}
+              disabled
               required
               placeholder='Συμπληρώστε το e-mail σας'
               isInvalid={isFieldEmpty('email', emptyFields) && !formData.email}
             />
           </Col>
-          <Col xs={12} md={6}>
+        </Row>
+        <Row className='w-100'>
+          <Col xs={12} md={4}>
             <Input
               label='Όνομα χρήστη'
               name='username'
-              value={formData.username}
+              value={formData?.username}
               onChange={handleInputChange}
+              disabled
               required
               placeholder='Συμπληρώστε το όνομα χρήστη σας'
               isInvalid={
@@ -131,13 +130,11 @@ export const RegisterPage = () => {
               }
             />
           </Col>
-        </Row>
-        <Row className='w-100'>
-          <Col xs={12} md={6}>
+          <Col xs={12} md={4}>
             <Input
               label='Κινητό τηλέφωνο'
               name='mobileNumber'
-              value={formData.mobileNumber}
+              value={formData?.mobileNumber}
               onChange={handleInputChange}
               required
               placeholder='Συμπληρώστε το κινητό σας'
@@ -148,11 +145,11 @@ export const RegisterPage = () => {
               }
             />
           </Col>
-          <Col xs={12} md={6}>
+          <Col xs={12} md={4}>
             <Input
               label='Διεύθυνση'
               name='address'
-              value={formData.address}
+              value={formData?.address}
               onChange={handleInputChange}
               required
               placeholder='Συμπληρώστε τη διεύθυνση σας'
@@ -163,52 +160,13 @@ export const RegisterPage = () => {
           </Col>
         </Row>
         <Row className='w-100'>
-          <Col xs={12} md={6}>
-            <Input
-              label='Κωδικός πρόσβασης'
-              name='password'
-              value={formData.password}
-              onChange={handleInputChange}
-              required
-              placeholder='Συμπληρώστε τον κωδικό πρόσβασης'
-              type='password'
-              isInvalid={
-                isFieldEmpty('password', emptyFields) && !formData.password
-              }
-            />
-          </Col>
-          <Col xs={12} md={6}>
-            <Input
-              label='Επανάληψη κωδικού πρόσβασης'
-              name='repeatPassword'
-              value={formData.repeatPassword}
-              onChange={handleInputChange}
-              required
-              placeholder='Συμπληρώστε τον κωδικό πρόσβασης'
-              type='password'
-              isInvalid={
-                isFieldEmpty('repeatPassword', emptyFields) &&
-                !formData.repeatPassword
-              }
-            />
-          </Col>
-        </Row>
-        <Row className='w-100 d-flex align-items-center justify-content-center'>
-          <Col xs={12} md={6}>
+          <Col sm={12}>
             <Button
-              label='Εγγραφή'
+              label='Αποθήκευση'
               variant='success'
-              icon={faUserPlus}
-              onClick={register}
+              icon={faSave}
+              onClick={updateUserData}
             />
-          </Col>
-          <Col xs={12} md={6} className='text-end'>
-            <span
-              className='account-span'
-              onClick={() => navigate(LOGIN_ROUTE)}
-            >
-              Έχετε λογαριασμό;
-            </span>
           </Col>
         </Row>
       </CardContainer>

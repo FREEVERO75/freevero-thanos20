@@ -1,5 +1,6 @@
 // src/httpService.js
 import axios from 'axios';
+import { hideLoader, showLoader } from '../controllers/loaderController';
 
 // Create an Axios instance
 export const http = axios.create({
@@ -9,6 +10,8 @@ export const http = axios.create({
 // Request interceptor
 http.interceptors.request.use(
   config => {
+    // show loader
+    showLoader();
     // Exclude login/register requests from adding the token
     if (!config.url.includes('/login') && !config.url.includes('/register')) {
       const token = localStorage.getItem('token');
@@ -20,6 +23,8 @@ http.interceptors.request.use(
     return config;
   },
   error => {
+    // hide loader
+    hideLoader();
     return Promise.reject(error);
   }
 );
@@ -27,6 +32,7 @@ http.interceptors.request.use(
 // Response interceptor
 http.interceptors.response.use(
   response => {
+    hideLoader();
     return response;
   },
   async error => {
@@ -41,6 +47,7 @@ http.interceptors.response.use(
       try {
         const refreshToken = localStorage.getItem('refreshToken');
         if (!refreshToken) {
+          hideLoader();
           window.location.href = '/login';
           return;
         }
@@ -48,19 +55,21 @@ http.interceptors.response.use(
           `${process.env.REACT_APP_BASE_URL}/user/createNewToken`,
           { refreshToken: refreshToken }
         );
-
+        hideLoader();
         localStorage.setItem('token', data.accessToken);
 
         originalRequest.headers.Authorization = `Bearer ${data.accessToken}`;
 
         return http(originalRequest);
       } catch (refreshError) {
+        hideLoader();
         console.error('Refresh token expired. Logging out...', refreshError);
         localStorage.removeItem('token');
         localStorage.removeItem('refreshToken');
         window.location.href = '/login';
       }
     }
+    hideLoader();
     return Promise.reject(error);
   }
 );

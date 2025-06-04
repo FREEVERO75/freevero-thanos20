@@ -20,3 +20,7 @@ export const validatePassword = password => {
     return true;
   }
 };
+
+// check if a specific field is empty
+export const isFieldEmpty = (field, emptyFields) =>
+  emptyFields?.includes(field);

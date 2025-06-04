@@ -3,14 +3,26 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import { BrowserRouter } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'react-toastify/dist/ReactToastify.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { LoaderProvider } from './contexts/LoaderContext';
+import { Loader } from './components/loader/Loader';
+import { ToastProvider } from './contexts/ToastContext';
+import { AuthProvider } from './contexts/AuthContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
+  <LoaderProvider>
+    <BrowserRouter>
+      <AuthProvider>
+        <ToastProvider>
+          <Loader />
+          <App />
+        </ToastProvider>
+      </AuthProvider>
+    </BrowserRouter>
+  </LoaderProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function
