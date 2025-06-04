@@ -75,7 +75,14 @@ export const AccountPage = () => {
 
   return (
     <MainLayout className='d-flex justify-content-center'>
-      <CardContainer height='50%' width='100%'>
+      <CardContainer
+        height='50%'
+        width='100%'
+        borderTopLeftRadius='4rem'
+        borderTopRightRadius='0.75rem'
+        borderBottomLeftRadius='0.75rem'
+        borderBottomRightRadius='4rem'
+      >
         <Logo />
         <Row className='w-100'>
           <Col xs={12} md={4}>

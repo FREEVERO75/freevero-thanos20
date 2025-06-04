@@ -8,6 +8,12 @@ export const CardContainer = styled.div`
   background-color: ${props => props.background || WHITE};
   border: 1px solid ${props => props.borderColor || WHITE};
   border-radius: ${props => props.borderRadius || '0.75rem'};
+  border-top-left-radius: ${props => props.borderTopLeftRadius || '0.75rem'};
+  border-top-right-radius: ${props => props.borderTopRightRadius || '0.75rem'};
+  border-bottom-left-radius: ${props =>
+    props.borderBottomLeftRadius || '0.75rem'};
+  border-bottom-right-radius: ${props =>
+    props.borderBottomRightRadius || '0.75rem'};
   padding: ${props => props.padding || '1rem'};
   display: flex;
   flex-direction: column;

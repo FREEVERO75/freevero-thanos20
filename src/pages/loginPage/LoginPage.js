@@ -50,7 +50,14 @@ export const LoginPage = () => {
 
   return (
     <MainLayout className='d-flex align-items-center justify-content-center'>
-      <CardContainer height='50%' padding='2rem'>
+      <CardContainer
+        height='50%'
+        padding='2rem'
+        borderTopLeftRadius='4rem'
+        borderTopRightRadius='0.75rem'
+        borderBottomLeftRadius='0.75rem'
+        borderBottomRightRadius='4rem'
+      >
         <Logo />
         <Row className='w-100'>
           <Col xs={12}>

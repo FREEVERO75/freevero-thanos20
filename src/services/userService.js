@@ -19,3 +19,7 @@ export const getAllUserService = () => {
 export const updateUserDataService = body => {
   return http.put('/user/updateUserData', body);
 };
+
+export const deleteUserService = id => {
+  return http.delete(`/user/deleteUser/${id}`);
+};

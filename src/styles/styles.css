@@ -36,6 +36,10 @@
     border-bottom-left-radius: 1rem;
 }
 
+.brand {
+  cursor: pointer;
+}
+
 .account-span {
     font-size: 1.2rem;
 }
@@ -49,4 +53,23 @@
   background-color: transparent !important;
   border: none !important;
   box-shadow: none !important;
+}
+
+.dropdown-menu[data-bs-popper] {
+  left: -110px !important;
+}
+
+.rdt_Table {
+  height: 30rem !important;
+}
+
+@media (max-width: 576px) {
+  .custom-w {
+    width: 90%;
+  }
+
+  .mobile-logo {
+    height: 80px !important;
+    width: 160px !important;
+  }
 }
