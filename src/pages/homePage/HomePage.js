@@ -1,4 +1,6 @@
 import { MainLayout } from '../../styles/styles';
+import { CallToActionSection } from './components/callToActionSection/CallToActionSection';
+import { FrequentQuestionsSection } from './components/FrequentQuestions/FrequentQuestionsSection';
 import { HeroSection } from './components/Hero/HeroSection';
 import { HowItWorksSection } from './components/HowItWorks/HowItWorksSection';
 import { OwnerSection } from './components/Owner/OwnerSection';
@@ -11,6 +13,8 @@ export const HomePage = () => {
       <HowItWorksSection />
       <OwnerSection />
       <UsersReviewSection />
+      <FrequentQuestionsSection />
+      <CallToActionSection />
     </MainLayout>
   );
 };

@@ -15,6 +15,7 @@ export const HeroSection = () => {
     padding: '0.8rem',
     border: `1px solid ${LIGHT_GRAY}`,
   };
+
   return (
     <Row>
       <Col sm={12} md={7}>
