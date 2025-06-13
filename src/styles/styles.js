@@ -17,9 +17,10 @@ export const CardContainer = styled.div`
   padding: ${props => props.padding || '1rem'};
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: ${props => (!props.disabledAlignItemsFlag ? 'center' : '')};
   justify-content: center;
-  gap: 1rem;
+  gap: ${props => props.gap || '1rem'};
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   @media (max-width: 576px) {
     width: 100%;
   }

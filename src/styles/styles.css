@@ -3,10 +3,11 @@
   --blue-dark-light: #4a6097;
   --blue: #1a8aae;
   --light-blue: #1094c0;
+  --main-gray: oklch(98.5% .002 247.839);
   --dark-gray: #a8a7a7;
-  --gray: #cecece;
-  --light-gray: rgb(250, 245, 242);
-  --white: #fdfcfc;
+  --gray: oklch(44.6% .03 256.802);
+  --light-gray: rgb(218, 218, 218);
+  --white: #ffffff;
   --ciel: #c1d0e1;
   --green: rgb(117, 216, 117);
   --green-light: rgb(173, 220, 173);
@@ -18,8 +19,30 @@
   --light-orange: rgb(245, 195, 69);
 }
 
+/*--------------- sizes ---------------*/
+
+.sm-font-size {
+  font-size: 0.95rem;
+}
+
+.md-font-size {
+  font-size: 1.125rem;
+  line-height: 1.5rem;
+}
+
 .lg-font-size {
-    font-size: 2rem;
+    font-size: 3rem;
+    line-height: 3rem;
+}
+
+/*--------------- colors-classes ---------------*/
+.gray {
+  color: var(--gray);
+}
+
+/*--------------- fonts ---------------*/
+.font-italic {
+  font-style: italic;
 }
 
 .main-image-wrapper {
