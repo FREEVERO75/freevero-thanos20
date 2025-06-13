@@ -6,4 +6,5 @@ export const PRIMARY_BLUE = 'var(--primary-blue)';
 export const CIEL = 'var(--ciel)';
 export const LIGHT_GRAY = 'var(--light-gray)';
 export const GRAY = 'var(--gray)';
+export const GRAY_SECOND = 'var(--gray-second)';
 export const BLUE_DARK = 'var(--blue-dark)';

@@ -4,8 +4,8 @@ import {
   faClipboardList,
   faEuroSign,
 } from '@fortawesome/free-solid-svg-icons';
-import { OwnerItem } from './OwnerItem';
 import { CardContainer } from '../../../../styles/styles';
+import { OwnerItem } from './OwnerItem';
 
 export const OwnerSection = () => {
   const ownerItems = [
