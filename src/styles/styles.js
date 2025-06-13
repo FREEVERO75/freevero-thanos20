@@ -3,7 +3,6 @@ import { MAIN_COLOR, WHITE } from '../constants/colors';
 
 export const CardContainer = styled.div`
   min-height: ${props => props.minHeight || 'auto'};
-  height: ${props => props.height || '50vh'};
   width: ${props => props.width || '70%'};
   background-color: ${props => props.background || WHITE};
   border: 1px solid ${props => props.borderColor || WHITE};
@@ -14,11 +13,12 @@ export const CardContainer = styled.div`
     props.borderBottomLeftRadius || '0.75rem'};
   border-bottom-right-radius: ${props =>
     props.borderBottomRightRadius || '0.75rem'};
-  padding: ${props => props.padding || '1rem'};
+  padding: ${props => props.padding || '2rem'};
   display: flex;
   flex-direction: column;
   align-items: ${props => (!props.disabledAlignItemsFlag ? 'center' : '')};
-  justify-content: center;
+  justify-content: ${props =>
+    !props.disabledJustifyContentFlag ? 'center' : ''};
   gap: ${props => props.gap || '1rem'};
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   @media (max-width: 576px) {
@@ -28,7 +28,7 @@ export const CardContainer = styled.div`
 
 export const MainLayout = styled.div`
   width: 100%;
-  min-height: 100vh;
+  min-height: auto;
   padding: 4rem;
   background: ${MAIN_COLOR};
   box-sizing: border-box;

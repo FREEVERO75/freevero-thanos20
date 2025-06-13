@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { BLUE_DARK, CIEL } from '../../constants/colors';
 import { DropDownMenu } from '../dropDownMenu/DropDownMenu';
 import {
+  faMotorcycle,
   faRightFromBracket,
   faUser,
   faUsers,
@@ -12,8 +13,8 @@ import { useAuth } from '../../contexts/AuthContext';
 import {
   ACCOUNT_ROUTE,
   HOME_ROUTE,
-  LOGIN_ROUTE,
   USERS_ROUTE,
+  VEHICLE_DASHBOARD_ROUTE,
 } from '../../constants/paths';
 import { faUserAlt } from '@fortawesome/free-solid-svg-icons/faUserAlt';
 
@@ -23,18 +24,24 @@ export const Header = () => {
   const getActions = () => [
     {
       id: 1,
+      name: 'Διαχείρηση οχήματος',
+      icon: faMotorcycle,
+      onClick: () => navigate(VEHICLE_DASHBOARD_ROUTE),
+    },
+    {
+      id: 2,
       name: 'Ο λογαριασμός μου',
       icon: faUserAlt,
       onClick: () => navigate(ACCOUNT_ROUTE),
     },
     authState?.role === 'admin' && {
-      id: 2,
+      id: 3,
       name: 'Χρήστες',
       icon: faUsers,
       onClick: () => navigate(USERS_ROUTE),
     },
     {
-      id: 3,
+      id: 4,
       name: 'Αποσύνδεση',
       icon: faRightFromBracket,
       onClick: () => {

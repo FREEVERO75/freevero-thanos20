@@ -24,12 +24,7 @@ export const OwnerSection = () => {
   ];
   return (
     <div className='w-100 pt-5 d-flex align-items-center justify-content-center'>
-      <CardContainer
-        disabledAlignItemsFlag='true'
-        width='100%'
-        padding='0.15rem'
-        gap='2rem'
-      >
+      <CardContainer disabledAlignItemsFlag='true' width='100%' gap='2rem'>
         <Row>
           <Col xs={12}>
             <h2 className='text-center'>Έχεις scooter ή μηχανή;</h2>
