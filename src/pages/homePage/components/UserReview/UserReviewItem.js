@@ -1,4 +1,4 @@
-import { WHITE } from '../../../constants/colors';
+import { WHITE } from '../../../../constants/colors';
 
 export const UserReviewItem = ({ review }) => {
   const style = {

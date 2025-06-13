@@ -1,8 +1,8 @@
 import { MainLayout } from '../../styles/styles';
-import { HeroSection } from './components/HeroSection';
-import { HowItWorksSection } from './components/HowItWorksSection';
-import { OwnerSection } from './components/OwnerSection';
-import { UsersReviewSection } from './components/UsersReviewSection';
+import { HeroSection } from './components/Hero/HeroSection';
+import { HowItWorksSection } from './components/HowItWorks/HowItWorksSection';
+import { OwnerSection } from './components/Owner/OwnerSection';
+import { UsersReviewSection } from './components/UserReview/UsersReviewSection';
 
 export const HomePage = () => {
   return (

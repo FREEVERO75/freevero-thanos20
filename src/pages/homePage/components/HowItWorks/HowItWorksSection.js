@@ -1,5 +1,5 @@
 import { Col, Row } from 'react-bootstrap';
-import { CardContainer } from '../../../styles/styles';
+import { CardContainer } from '../../../../styles/styles';
 import { HowItWorksItem } from './HowItWorksItem';
 import {
   faCalendarCheck,

@@ -1,11 +1,11 @@
 import { Col, Row } from 'react-bootstrap';
-import { CardContainer } from '../../../styles/styles';
 import {
   faCircleCheck,
   faClipboardList,
   faEuroSign,
 } from '@fortawesome/free-solid-svg-icons';
 import { OwnerItem } from './OwnerItem';
+import { CardContainer } from '../../../../styles/styles';
 
 export const OwnerSection = () => {
   const ownerItems = [

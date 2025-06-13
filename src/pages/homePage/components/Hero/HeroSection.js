@@ -1,8 +1,8 @@
 import { Col, Row } from 'react-bootstrap';
-import { Logo } from '../../../components/logo/Logo';
-import { Button } from '../../../components/button/Button';
-import main_image from '../../../assets/images/scooter.jpg';
-import { LIGHT_GRAY } from '../../../constants/colors';
+import { Logo } from '../../../../components/logo/Logo';
+import { Button } from '../../../../components/button/Button';
+import main_image from '../../../../assets/images/scooter.jpg';
+import { LIGHT_GRAY } from '../../../../constants/colors';
 
 export const HeroSection = () => {
   const bookingBtnStyle = {
