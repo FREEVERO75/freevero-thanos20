@@ -4,8 +4,8 @@ import { ADD_VEHICLE_LOCALE_STORAGE_KEY } from '../../../constants/localeStorage
 export const useAddVehicleForm = () => {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
-    licensePlate: '',
-    year: '',
+    vehiclePlate: '',
+    vehicleYear: '',
     motorcycleType: '',
     vehicleBrand: '',
     vehicleModel: '',

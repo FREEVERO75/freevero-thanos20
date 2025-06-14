@@ -1,6 +1,5 @@
 import { MainLayout } from '../../styles/styles';
 import { PageTitle } from '../../components/pageTitle/PageTitle';
-import { FormFields } from './components/FormFields';
 import { VehicleCard } from '../../components/vehicleCard/VehicleCard';
 import { useAddVehicleForm } from './hooks/useAddVehicleForm';
 import { vehicleCards } from './components/vehicleCardConfig/VehicleCardConfig';
@@ -12,6 +11,7 @@ export const AddVehiclePage = () => {
   const currentStep = vehicleCards[step - 1];
 
   const stepButtons = currentStep?.buttons({
+    clearForm,
     nextStep,
     prevStep,
   });
@@ -25,6 +25,8 @@ export const AddVehiclePage = () => {
         formTitle={currentStep?.title}
         fields={currentStep?.fields}
         buttons={stepButtons}
+        formData={formData}
+        onChange={handleChange}
       />
     </MainLayout>
   );

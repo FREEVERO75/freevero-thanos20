@@ -1,17 +1,24 @@
 import {
   faArrowLeft,
   faArrowRight,
+  faBroom,
   faMotorcycle,
 } from '@fortawesome/free-solid-svg-icons';
 import { basicDataFields, technicalData } from '../formConfig/addVehicleFields';
-import { BLUE, ORANGE, RED } from '../../../../constants/colors';
+import { BLUE, ORANGE } from '../../../../constants/colors';
 
 export const vehicleCards = [
   {
     icon: faMotorcycle,
     title: 'Βασικά Στοιχεία',
     fields: basicDataFields,
-    buttons: ({ prevStep, nextStep }) => [
+    buttons: ({ clearForm, nextStep }) => [
+      {
+        label: 'Καθαρισμός',
+        iconLeft: faBroom,
+        style: { background: ORANGE, borderColor: ORANGE, width: '12rem' },
+        onClick: clearForm,
+      },
       {
         label: 'Συνέχεια',
         iconRight: faArrowRight,

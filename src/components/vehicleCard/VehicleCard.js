@@ -7,7 +7,15 @@ import { FormFields } from '../../pages/addVehiclePage/components/FormFields';
 
 const MotionCard = motion(CardContainer);
 
-export const VehicleCard = ({ icon, formTitle, fields, buttons, step }) => {
+export const VehicleCard = ({
+  icon,
+  formTitle,
+  fields,
+  buttons,
+  step,
+  formData,
+  onChange,
+}) => {
   return (
     <MotionCard
       key={step}
@@ -18,7 +26,7 @@ export const VehicleCard = ({ icon, formTitle, fields, buttons, step }) => {
       transition={{ duration: 0.3, ease: 'easeOut' }}
     >
       <FormTitle icon={icon} title={formTitle} />
-      <FormFields fields={fields} />
+      <FormFields fields={fields} formData={formData} onChange={onChange} />
       <div className='d-flex justify-content-end flex-wrap gap-2 w-100 pt-3'>
         {buttons?.map((item, index) => (
           <div key={index}>

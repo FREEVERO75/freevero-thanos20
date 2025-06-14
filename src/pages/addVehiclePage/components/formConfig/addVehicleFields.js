@@ -4,6 +4,7 @@ import { fuelTypeOptions, motorcycleTypeOptions } from './addVehicleOptions';
 export const basicDataFields = [
   {
     label: 'Πινακίδα κυκλοφορίας',
+    name: 'vehiclePlate',
     required: true,
     placeholder: 'Συμπληρώστε την πινακίδα',
     type: INPUT_TYPE,
@@ -11,6 +12,7 @@ export const basicDataFields = [
   },
   {
     label: 'Έτος κυκλοφορίας',
+    name: 'vehicleYear',
     required: true,
     placeholder: 'Συμπληρώστε το έτος κυκλοφορίας',
     type: INPUT_TYPE,
@@ -18,6 +20,7 @@ export const basicDataFields = [
   },
   {
     label: 'Τύπος μηχανής',
+    name: 'motorcycleType',
     required: true,
     type: SELECT_TYPE,
     options: motorcycleTypeOptions,
@@ -25,6 +28,7 @@ export const basicDataFields = [
   },
   {
     label: 'Μάρκα οχήματος',
+    name: 'vehicleBrand',
     required: true,
     placeholder: 'Συμπληρώστε το μοντέλο οχήματος',
     type: INPUT_TYPE,
@@ -32,6 +36,7 @@ export const basicDataFields = [
   },
   {
     label: 'Μοντέλο οχήματος',
+    name: 'vehicleModel',
     required: true,
     placeholder: 'Συμπληρώστε το μοντέλο οχήματος',
     type: INPUT_TYPE,
