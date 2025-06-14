@@ -34,10 +34,10 @@ export const AddUserModal = ({ show, handleClose, changeRefreshFlag }) => {
   ];
   const { showSuccess, showError } = useToast();
 
-  const handleInputChange = (name, value) => {
+  const handleInputChange = event => {
     setFormData(prevFormData => ({
       ...prevFormData,
-      [name]: value,
+      [event.target.name]: event.target.value,
     }));
   };
 

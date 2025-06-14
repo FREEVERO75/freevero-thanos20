@@ -7,7 +7,12 @@ export const FormFields = ({ fields, formData, onChange }) => {
       {fields.map((field, index) => (
         <Col key={index} xs={12} sm={field.sm || 6} className='pt-3'>
           <FieldRenderer
-            field={{ ...field, value: formData[field.name] || '', onChange }}
+            field={{
+              ...field,
+              value: formData[field.name] || '',
+              formData,
+              onChange,
+            }}
           />
         </Col>
       ))}

@@ -36,10 +36,10 @@ export const EditUserModal = ({
 
   const { showSuccess, showError } = useToast();
 
-  const handleInputChange = (name, value) => {
+  const handleInputChange = event => {
     setFormData(prevFormData => ({
       ...prevFormData,
-      [name]: value,
+      [event.target.name]: event.target.value,
     }));
   };
 

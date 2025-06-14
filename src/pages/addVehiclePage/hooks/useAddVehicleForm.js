@@ -3,19 +3,40 @@ import { ADD_VEHICLE_LOCALE_STORAGE_KEY } from '../../../constants/localeStorage
 
 export const useAddVehicleForm = () => {
   const [step, setStep] = useState(1);
-  const [formData, setFormData] = useState({
-    vehiclePlate: '',
-    vehicleYear: '',
-    motorcycleType: '',
-    vehicleBrand: '',
-    vehicleModel: '',
+  const [formData, setFormData] = useState(() => {
+    const storedData = localStorage.getItem(ADD_VEHICLE_LOCALE_STORAGE_KEY);
+    return storedData
+      ? JSON.parse(storedData)
+      : {
+          vehiclePlate: '',
+          vehicleYear: '',
+          motorcycleType: null,
+          vehicleBrand: '',
+          vehicleModel: '',
+          vehicleKm: '',
+          vehicleCc: '',
+          vehicleHp: '',
+          vehicleFuelType: null,
+          vehicleTransmission: null,
+          vehiclePhotos: [],
+          vehicleLicence: null,
+        };
   });
 
-  const handleChange = (name, value) => {
-    setFormData(prev => ({
-      ...prev,
-      [name]: value,
-    }));
+  const handleChange = event => {
+    const { name, type, files, value } = event.target;
+
+    if (type === 'file') {
+      setFormData(prev => ({
+        ...prev,
+        [name]: Array.from(files),
+      }));
+    } else {
+      setFormData(prev => ({
+        ...prev,
+        [name]: value,
+      }));
+    }
   };
 
   const nextStep = () => setStep(prev => prev + 1);

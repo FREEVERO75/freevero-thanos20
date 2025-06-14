@@ -1,5 +1,13 @@
-import { INPUT_TYPE, SELECT_TYPE } from '../../../../constants/types';
-import { fuelTypeOptions, motorcycleTypeOptions } from './addVehicleOptions';
+import {
+  CUSTOM_FILE_INPUT,
+  INPUT_TYPE,
+  SELECT_TYPE,
+} from '../../../../constants/types';
+import {
+  fuelTypeOptions,
+  motorcycleTypeOptions,
+  transmissionOptions,
+} from './addVehicleOptions';
 
 export const basicDataFields = [
   {
@@ -7,7 +15,7 @@ export const basicDataFields = [
     name: 'vehiclePlate',
     required: true,
     placeholder: 'Συμπληρώστε την πινακίδα',
-    type: INPUT_TYPE,
+    fieldType: INPUT_TYPE,
     sm: 4,
   },
   {
@@ -15,15 +23,8 @@ export const basicDataFields = [
     name: 'vehicleYear',
     required: true,
     placeholder: 'Συμπληρώστε το έτος κυκλοφορίας',
-    type: INPUT_TYPE,
-    sm: 4,
-  },
-  {
-    label: 'Τύπος μηχανής',
-    name: 'motorcycleType',
-    required: true,
-    type: SELECT_TYPE,
-    options: motorcycleTypeOptions,
+    type: 'number',
+    fieldType: INPUT_TYPE,
     sm: 4,
   },
   {
@@ -31,7 +32,7 @@ export const basicDataFields = [
     name: 'vehicleBrand',
     required: true,
     placeholder: 'Συμπληρώστε το μοντέλο οχήματος',
-    type: INPUT_TYPE,
+    fieldType: INPUT_TYPE,
     sm: 4,
   },
   {
@@ -39,7 +40,7 @@ export const basicDataFields = [
     name: 'vehicleModel',
     required: true,
     placeholder: 'Συμπληρώστε το μοντέλο οχήματος',
-    type: INPUT_TYPE,
+    fieldType: INPUT_TYPE,
     sm: 4,
   },
 ];
@@ -47,30 +48,77 @@ export const basicDataFields = [
 export const technicalData = [
   {
     label: 'Χιλιόμετρα',
+    name: 'vehicleKm',
     required: true,
     placeholder: 'Συμπληρώστε τα χιλιόμετρα',
-    type: INPUT_TYPE,
+    type: 'number',
+    fieldType: INPUT_TYPE,
     sm: 4,
   },
   {
     label: 'Κυβικά',
+    name: 'vehicleCc',
     required: true,
     placeholder: 'Συμπληρώστε τα κυβικά',
-    type: INPUT_TYPE,
+    type: 'number',
+    fieldType: INPUT_TYPE,
     sm: 4,
   },
   {
     label: 'Ίπποι',
+    name: 'vehicleHp',
     required: true,
     placeholder: 'Συμπληρώστε τους ίππους',
-    type: INPUT_TYPE,
+    type: 'number',
+    fieldType: INPUT_TYPE,
     sm: 4,
   },
   {
     label: 'Τύπος Καυσίμου',
+    name: 'vehicleFuelType',
     required: true,
-    type: SELECT_TYPE,
+    fieldType: SELECT_TYPE,
     options: fuelTypeOptions,
+    sm: 4,
+  },
+  {
+    label: 'Τύπος μηχανής',
+    name: 'motorcycleType',
+    required: true,
+    fieldType: SELECT_TYPE,
+    options: motorcycleTypeOptions,
+    sm: 4,
+  },
+  {
+    label: 'Σασμάν',
+    name: 'vehicleTransmission',
+    required: true,
+    fieldType: SELECT_TYPE,
+    options: transmissionOptions,
+    sm: 4,
+  },
+];
+
+export const documents = [
+  {
+    label: 'Φωτογραφίες',
+    btnLabel: 'Επιλογή αρχείων',
+    name: 'vehiclePhotos',
+    required: true,
+    type: 'file',
+    multiple: true,
+    fieldType: CUSTOM_FILE_INPUT,
+    accept: 'image/*',
+    sm: 4,
+  },
+  {
+    label: 'Άδεια Κυκλοφορίας',
+    name: 'vehicleLicence',
+    required: true,
+    type: 'file',
+    multiple: false,
+    fieldType: CUSTOM_FILE_INPUT,
+    accept: 'image/*,application/pdf',
     sm: 4,
   },
 ];
