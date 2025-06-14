@@ -10,16 +10,19 @@ import { LoaderProvider } from './contexts/LoaderContext';
 import { Loader } from './components/loader/Loader';
 import { ToastProvider } from './contexts/ToastContext';
 import { AuthProvider } from './contexts/AuthContext';
+import { VehicleProvider } from './contexts/VehicleContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <LoaderProvider>
     <BrowserRouter>
       <AuthProvider>
-        <ToastProvider>
-          <Loader />
-          <App />
-        </ToastProvider>
+        <VehicleProvider>
+          <ToastProvider>
+            <Loader />
+            <App />
+          </ToastProvider>
+        </VehicleProvider>
       </AuthProvider>
     </BrowserRouter>
   </LoaderProvider>

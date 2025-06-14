@@ -1,6 +1,6 @@
 import { Col, Row } from 'react-bootstrap';
-import { FieldRenderer } from '../../../components/fieldRenderer/FieldRenderer';
-import { isFieldEmpty } from '../../../utils/utils';
+import { FieldRenderer } from '../fieldRenderer/FieldRenderer';
+import { isFieldEmpty } from '../../utils/utils';
 
 export const FormFields = ({ fields, formData, onChange, emptyFields }) => {
   return (

@@ -1,34 +1,32 @@
 import { useEffect, useState } from 'react';
-import { ADD_VEHICLE_LOCALE_STORAGE_KEY } from '../../../constants/localeStorageKeys';
 import { useToast } from '../../../contexts/ToastContext';
-import { validateFields } from '../../../utils/utils';
-
-const defaultForm = {
-  vehiclePlate: '',
-  vehicleYear: '',
-  motorcycleType: null,
-  vehicleBrand: '',
-  vehicleModel: '',
-  vehicleKm: '',
-  vehicleCc: '',
-  vehicleHp: '',
-  vehicleFuelType: null,
-  vehicleTransmission: null,
-  vehiclePhotos: [],
-  vehicleLicence: null,
-  vehicleAddress: '',
-};
+import { isEmptyObject, validateFields } from '../../../utils/utils';
+import { useVehicle } from '../../../contexts/VehicleContext';
+import { useNavigate } from 'react-router-dom';
+import { FINAL_VEHICLE_ROUTE } from '../../../constants/paths';
 
 export const useAddVehicleForm = () => {
   const [step, setStep] = useState(1);
-  const [formData, setFormData] = useState(() => {
-    const storedData = localStorage.getItem(ADD_VEHICLE_LOCALE_STORAGE_KEY);
-    return storedData
-      ? { ...defaultForm, ...JSON.parse(storedData) }
-      : defaultForm;
+  const [formData, setFormData] = useState({
+    vehiclePlate: '',
+    vehicleYear: '',
+    motorcycleType: null,
+    vehicleBrand: '',
+    vehicleModel: '',
+    vehicleKm: '',
+    vehicleCc: '',
+    vehicleHp: '',
+    vehicleFuelType: null,
+    vehicleTransmission: null,
+    vehiclePhotos: [],
+    vehicleLicence: null,
+    vehicleAddress: '',
   });
   const [emptyFields, setEmptyFields] = useState([]);
   const { showError } = useToast();
+  const { setVehicleData, clearVehicleData, vehicleObj } = useVehicle();
+
+  const navigate = useNavigate();
 
   const fieldsForValidation = [
     'vehiclePlate',
@@ -78,18 +76,23 @@ export const useAddVehicleForm = () => {
       setEmptyFields(emptyFields);
       showError('Συμπληρώστε όλα τα πεδία!');
       return;
+    } else {
+      navigate(FINAL_VEHICLE_ROUTE);
     }
   };
 
   useEffect(() => {
-    localStorage.setItem(
-      ADD_VEHICLE_LOCALE_STORAGE_KEY,
-      JSON.stringify(formData)
-    );
+    setVehicleData(formData);
   }, [formData]);
 
+  useEffect(() => {
+    if (isEmptyObject(formData) && !isEmptyObject(vehicleObj)) {
+      setFormData(vehicleObj);
+    }
+  }, []);
+
   const clearForm = () => {
-    localStorage.removeItem(ADD_VEHICLE_LOCALE_STORAGE_KEY);
+    clearVehicleData();
     setFormData({});
   };
 

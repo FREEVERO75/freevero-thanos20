@@ -24,3 +24,12 @@ export const validatePassword = password => {
 // check if a specific field is empty
 export const isFieldEmpty = (field, emptyFields) =>
   emptyFields?.includes(field);
+
+// check if a object is empty
+export const isEmptyObject = obj =>
+  Object.values(obj).every(
+    value =>
+      value === '' ||
+      value === null ||
+      (Array.isArray(value) && value.length === 0)
+  );

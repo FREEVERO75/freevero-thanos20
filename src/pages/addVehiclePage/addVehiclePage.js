@@ -4,6 +4,7 @@ import { VehicleCard } from '../../components/vehicleCard/VehicleCard';
 import { useAddVehicleForm } from './hooks/useAddVehicleForm';
 import { vehicleCards } from './components/vehicleCardConfig/VehicleCardConfig';
 import { useNavigate } from 'react-router-dom';
+import { FormFields } from '../../components/formFields/FormFields';
 import { useEffect } from 'react';
 
 export const AddVehiclePage = () => {
@@ -33,7 +34,6 @@ export const AddVehiclePage = () => {
   useEffect(() => {
     console.log(formData);
   }, [formData]);
-
   return (
     <MainLayout>
       <PageTitle title='Προσθήκη Οχήματος' />
@@ -41,11 +41,15 @@ export const AddVehiclePage = () => {
         step={step}
         icon={currentStep?.icon}
         formTitle={currentStep?.title}
-        fields={currentStep?.fields}
+        content={
+          <FormFields
+            fields={currentStep?.fields}
+            formData={formData}
+            onChange={handleChange}
+            emptyFields={emptyFields}
+          />
+        }
         buttons={stepButtons}
-        formData={formData}
-        onChange={handleChange}
-        emptyFields={emptyFields}
       />
     </MainLayout>
   );
