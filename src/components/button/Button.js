@@ -1,7 +1,14 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Button as BootstrapButton } from 'react-bootstrap';
 
-export const Button = ({ label, style, icon, iconSize, ...props }) => {
+export const Button = ({
+  label,
+  style,
+  iconLeft,
+  iconRight,
+  iconSize,
+  ...props
+}) => {
   const combinedStyle = { width: '15rem', ...style };
   return (
     <BootstrapButton
@@ -9,8 +16,11 @@ export const Button = ({ label, style, icon, iconSize, ...props }) => {
       style={combinedStyle}
       {...props}
     >
-      {icon && <FontAwesomeIcon icon={icon} size={iconSize || '1x'} />}
+      {iconLeft && <FontAwesomeIcon icon={iconLeft} size={iconSize || '1x'} />}
       {label}
+      {iconRight && (
+        <FontAwesomeIcon icon={iconRight} size={iconSize || '1x'} />
+      )}
     </BootstrapButton>
   );
 };

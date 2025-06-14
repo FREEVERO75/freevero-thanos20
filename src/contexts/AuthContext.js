@@ -7,6 +7,7 @@ const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [authState, setAuthState] = useState(null);
+  const [loading, setLoading] = useState(true);
   const authToken = localStorage.getItem('token');
 
   const navigate = useNavigate();
@@ -25,14 +26,18 @@ export const AuthProvider = ({ children }) => {
       authToken !== 'null' &&
       authToken !== ''
     ) {
-      let user;
-      user = jwtDecode(authToken.slice(7));
-      setAuthState(user);
+      try {
+        const user = jwtDecode(authToken.slice(7));
+        setAuthState(user);
+      } catch (error) {
+        console.error('Invalid token:', error);
+      }
     }
+    setLoading(false);
   }, []);
 
   return (
-    <AuthContext.Provider value={{ authState, logout, setAuthState }}>
+    <AuthContext.Provider value={{ authState, logout, setAuthState, loading }}>
       {children}
     </AuthContext.Provider>
   );

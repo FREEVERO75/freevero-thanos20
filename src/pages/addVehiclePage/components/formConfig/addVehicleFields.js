@@ -1,6 +1,7 @@
-import { INPUT_TYPE } from '../../../../constants/types';
+import { INPUT_TYPE, SELECT_TYPE } from '../../../../constants/types';
+import { fuelTypeOptions, motorcycleTypeOptions } from './addVehicleOptions';
 
-export const addVehicleFields = [
+export const basicDataFields = [
   {
     label: 'Πινακίδα κυκλοφορίας',
     required: true,
@@ -11,68 +12,60 @@ export const addVehicleFields = [
   {
     label: 'Έτος κυκλοφορίας',
     required: true,
+    placeholder: 'Συμπληρώστε το έτος κυκλοφορίας',
     type: INPUT_TYPE,
     sm: 4,
   },
   {
     label: 'Τύπος μηχανής',
     required: true,
+    type: SELECT_TYPE,
+    options: motorcycleTypeOptions,
+    sm: 4,
+  },
+  {
+    label: 'Μάρκα οχήματος',
+    required: true,
+    placeholder: 'Συμπληρώστε το μοντέλο οχήματος',
     type: INPUT_TYPE,
     sm: 4,
   },
   {
-    label: 'Μοντέλο',
+    label: 'Μοντέλο οχήματος',
     required: true,
+    placeholder: 'Συμπληρώστε το μοντέλο οχήματος',
     type: INPUT_TYPE,
     sm: 4,
   },
+];
+
+export const technicalData = [
   {
     label: 'Χιλιόμετρα',
     required: true,
+    placeholder: 'Συμπληρώστε τα χιλιόμετρα',
     type: INPUT_TYPE,
     sm: 4,
   },
   {
     label: 'Κυβικά',
     required: true,
+    placeholder: 'Συμπληρώστε τα κυβικά',
     type: INPUT_TYPE,
     sm: 4,
   },
   {
-    label: 'Πινακίδα κυκλοφορίας',
+    label: 'Ίπποι',
     required: true,
-    placeholder: 'Συμπληρώστε την πινακίδα',
+    placeholder: 'Συμπληρώστε τους ίππους',
     type: INPUT_TYPE,
     sm: 4,
   },
   {
-    label: 'Έτος κυκλοφορίας',
+    label: 'Τύπος Καυσίμου',
     required: true,
-    type: INPUT_TYPE,
-    sm: 4,
-  },
-  {
-    label: 'Τύπος μηχανής',
-    required: true,
-    type: INPUT_TYPE,
-    sm: 4,
-  },
-  {
-    label: 'Μοντέλο',
-    required: true,
-    type: INPUT_TYPE,
-    sm: 4,
-  },
-  {
-    label: 'Χιλιόμετρα',
-    required: true,
-    type: INPUT_TYPE,
-    sm: 4,
-  },
-  {
-    label: 'Κυβικά',
-    required: true,
-    type: INPUT_TYPE,
+    type: SELECT_TYPE,
+    options: fuelTypeOptions,
     sm: 4,
   },
 ];

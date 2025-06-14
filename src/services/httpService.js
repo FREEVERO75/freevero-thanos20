@@ -37,13 +37,19 @@ http.interceptors.response.use(
   },
   async error => {
     console.log(error);
-    const originalRequest = error.config;
+    const originalRequest = error?.config;
+    const response = error?.response;
+    const status = error?.response?.status;
+    const errorCode = error?.response?.data?.error_code;
 
-    if (
-      error.response &&
-      error.response.status === 401 &&
-      error.response.data.error_code === 104
-    ) {
+    // token not found
+    if (response && status === 401 && errorCode === 103) {
+      hideLoader();
+      window.location.href = '/login';
+      return;
+    }
+
+    if (response && status === 401 && errorCode === 104) {
       try {
         const refreshToken = localStorage.getItem('refreshToken');
         if (!refreshToken) {
