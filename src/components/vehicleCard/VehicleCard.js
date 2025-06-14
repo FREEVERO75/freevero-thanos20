@@ -15,6 +15,7 @@ export const VehicleCard = ({
   step,
   formData,
   onChange,
+  emptyFields,
 }) => {
   return (
     <MotionCard
@@ -26,7 +27,12 @@ export const VehicleCard = ({
       transition={{ duration: 0.3, ease: 'easeOut' }}
     >
       <FormTitle icon={icon} title={formTitle} />
-      <FormFields fields={fields} formData={formData} onChange={onChange} />
+      <FormFields
+        fields={fields}
+        formData={formData}
+        onChange={onChange}
+        emptyFields={emptyFields}
+      />
       <div className='d-flex justify-content-end flex-wrap gap-2 w-100 pt-3'>
         {buttons?.map((item, index) => (
           <div key={index}>

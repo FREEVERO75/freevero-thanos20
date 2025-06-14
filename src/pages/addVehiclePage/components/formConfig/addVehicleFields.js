@@ -2,6 +2,7 @@ import {
   CUSTOM_FILE_INPUT,
   INPUT_TYPE,
   SELECT_TYPE,
+  ADDRESS_INPUT,
 } from '../../../../constants/types';
 import {
   fuelTypeOptions,
@@ -104,7 +105,7 @@ export const documents = [
     label: 'Φωτογραφίες',
     btnLabel: 'Επιλογή αρχείων',
     name: 'vehiclePhotos',
-    required: true,
+    required: false,
     type: 'file',
     multiple: true,
     fieldType: CUSTOM_FILE_INPUT,
@@ -119,6 +120,13 @@ export const documents = [
     multiple: false,
     fieldType: CUSTOM_FILE_INPUT,
     accept: 'image/*,application/pdf',
+    sm: 4,
+  },
+  {
+    label: 'Διεύθυνση',
+    name: 'vehicleAddress',
+    required: true,
+    fieldType: ADDRESS_INPUT,
     sm: 4,
   },
 ];

@@ -7,8 +7,16 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 
 export const AddVehiclePage = () => {
-  const { step, formData, handleChange, nextStep, prevStep, clearForm } =
-    useAddVehicleForm();
+  const {
+    step,
+    formData,
+    handleChange,
+    nextStep,
+    prevStep,
+    clearForm,
+    goToFinalViewPageAndValidateFields,
+    emptyFields,
+  } = useAddVehicleForm();
 
   const navigate = useNavigate();
 
@@ -19,6 +27,7 @@ export const AddVehiclePage = () => {
     clearForm,
     nextStep,
     prevStep,
+    goToFinalViewPageAndValidateFields,
   });
 
   useEffect(() => {
@@ -36,6 +45,7 @@ export const AddVehiclePage = () => {
         buttons={stepButtons}
         formData={formData}
         onChange={handleChange}
+        emptyFields={emptyFields}
       />
     </MainLayout>
   );

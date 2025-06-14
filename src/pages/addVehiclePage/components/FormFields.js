@@ -1,7 +1,8 @@
 import { Col, Row } from 'react-bootstrap';
 import { FieldRenderer } from '../../../components/fieldRenderer/FieldRenderer';
+import { isFieldEmpty } from '../../../utils/utils';
 
-export const FormFields = ({ fields, formData, onChange }) => {
+export const FormFields = ({ fields, formData, onChange, emptyFields }) => {
   return (
     <Row className='w-100'>
       {fields.map((field, index) => (
@@ -12,6 +13,8 @@ export const FormFields = ({ fields, formData, onChange }) => {
               value: formData[field.name] || '',
               formData,
               onChange,
+              isInvalid:
+                isFieldEmpty(field.name, emptyFields) && !formData[field.name],
             }}
           />
         </Col>

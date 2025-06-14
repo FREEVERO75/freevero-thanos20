@@ -22,7 +22,7 @@ export const Map = () => {
       <Row>
         <Col xs={12}>
           <div className='rounded-lg'>
-            <LoadScript googleMapsApiKey='AIzaSyD0OziLlVre0mt_HweXTG46yoUOvsDOLCY'>
+            <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_API_KEY}>
               <GoogleMap
                 mapContainerStyle={containerStyle}
                 center={center}

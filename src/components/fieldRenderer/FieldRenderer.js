@@ -1,9 +1,11 @@
 import {
+  ADDRESS_INPUT,
   CUSTOM_FILE_INPUT,
   INPUT_GROUP_TYPE,
   INPUT_TYPE,
   SELECT_TYPE,
 } from '../../constants/types';
+import { AddressInputWithScript } from '../addressInputWithScript/AddressInputWithScript';
 import { CustomFileInput } from '../customFileInput/CustomFileInput';
 import { Input } from '../input/Input';
 import { InputGroup } from '../inputGroup/InputGroup';
@@ -25,6 +27,9 @@ export const FieldRenderer = ({ field }) => {
           btnLabel={field?.btnLabel}
         />
       );
+
+    case ADDRESS_INPUT:
+      return <AddressInputWithScript {...field} />;
     default:
       return null;
   }

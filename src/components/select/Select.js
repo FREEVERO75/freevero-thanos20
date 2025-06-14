@@ -9,7 +9,7 @@ export const Select = ({ options, label, required, ...props }) => {
         {required && <span style={{ color: RED }}> *</span>}
       </Form.Label>
       <Form.Select {...props}>
-        <option>Επιλέξτε</option>
+        <option value=''>Επιλέξτε</option>
         {options?.map((item, index) => (
           <option key={index} value={item?.value}>
             {item?.label}

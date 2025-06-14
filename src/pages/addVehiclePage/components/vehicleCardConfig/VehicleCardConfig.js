@@ -2,7 +2,6 @@ import {
   faArrowLeft,
   faArrowRight,
   faBan,
-  faBroom,
   faFile,
   faGear,
   faMotorcycle,
@@ -61,7 +60,7 @@ export const vehicleCards = [
     icon: faFile,
     title: 'Έγγραφα & Τοποθεσία',
     fields: documents,
-    buttons: ({ prevStep, nextStep }) => [
+    buttons: ({ prevStep, goToFinalViewPageAndValidateFields }) => [
       {
         label: 'Πίσω',
         iconLeft: faArrowLeft,
@@ -69,10 +68,10 @@ export const vehicleCards = [
         onClick: prevStep,
       },
       {
-        label: 'Συνέχεια',
+        label: 'Ολοκλήρωση',
         iconRight: faArrowRight,
         style: { background: BLUE, borderColor: BLUE, width: '12rem' },
-        onClick: nextStep,
+        onClick: goToFinalViewPageAndValidateFields,
       },
     ],
   },
