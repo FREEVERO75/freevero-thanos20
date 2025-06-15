@@ -16,7 +16,7 @@ http.interceptors.request.use(
   config => {
     // show loader
     showLoader();
-    // Exclude login/register requests from adding the token
+    // Exclude login/register requests from adding the token and check
     if (!config.url.includes('/login') && !config.url.includes('/register')) {
       const token = localStorage.getItem(TOKEN_LOCALE_STORAGE_KEY);
       if (token) {
