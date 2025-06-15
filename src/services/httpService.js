@@ -75,6 +75,13 @@ http.interceptors.response.use(
         window.location.href = '/login';
       }
     }
+
+    if (response && status === 403) {
+      localStorage.removeItem('token');
+      localStorage.removeItem('refreshToken');
+      window.location.href = '/login';
+    }
+
     hideLoader();
     return Promise.reject(error);
   }

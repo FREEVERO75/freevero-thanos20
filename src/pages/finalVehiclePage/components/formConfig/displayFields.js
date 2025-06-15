@@ -1,3 +1,9 @@
+import {
+  fuelTypeOptions,
+  motorcycleTypeOptions,
+  transmissionOptions,
+} from '../../../../constants/selectOptions';
+
 export const displayFields = [
   { label: 'Πινακίδα κυκλοφορίας', name: 'vehiclePlate' },
   { label: 'Έτος κυκλοφορίας', name: 'vehicleYear' },
@@ -9,31 +15,17 @@ export const displayFields = [
   {
     label: 'Τύπος Καυσίμου',
     name: 'vehicleFuelType',
-    options: [
-      { label: 'Βενζίνη', value: 0 },
-      { label: 'Ηλεκτρικό', value: 1 },
-    ],
+    options: fuelTypeOptions,
   },
   {
     label: 'Τύπος μηχανής',
     name: 'motorcycleType',
-    options: [
-      { label: 'Scooter', value: 0 },
-      { label: 'Moped', value: 1 },
-      { label: 'Cruiser', value: 2 },
-      { label: 'Sportbike', value: 3 },
-      { label: 'Touring', value: 4 },
-      { label: 'Off road/Dirt bike', value: 5 },
-      { label: 'Adenture', value: 6 },
-    ],
+    options: motorcycleTypeOptions,
   },
   {
     label: 'Σασμάν',
     name: 'vehicleTransmission',
-    options: [
-      { label: 'Χειροκίνητο', value: 0 },
-      { label: 'Αυτόματο', value: 1 },
-    ],
+    options: transmissionOptions,
   },
   { label: 'Διεύθυνση', name: 'vehicleAddress' },
   { label: 'Φωτογραφίες', name: 'vehiclePhotos', sm: 12 },

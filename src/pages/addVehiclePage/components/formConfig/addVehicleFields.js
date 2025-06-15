@@ -1,14 +1,14 @@
 import {
+  fuelTypeOptions,
+  motorcycleTypeOptions,
+  transmissionOptions,
+} from '../../../../constants/selectOptions';
+import {
   CUSTOM_FILE_INPUT,
   INPUT_TYPE,
   SELECT_TYPE,
   ADDRESS_INPUT,
 } from '../../../../constants/types';
-import {
-  fuelTypeOptions,
-  motorcycleTypeOptions,
-  transmissionOptions,
-} from './addVehicleOptions';
 
 export const basicDataFields = [
   {
@@ -17,6 +17,7 @@ export const basicDataFields = [
     required: true,
     placeholder: 'Συμπληρώστε την πινακίδα',
     fieldType: INPUT_TYPE,
+    maxLength: 8,
     sm: 4,
   },
   {
@@ -24,8 +25,10 @@ export const basicDataFields = [
     name: 'vehicleYear',
     required: true,
     placeholder: 'Συμπληρώστε το έτος κυκλοφορίας',
-    type: 'number',
+    type: 'text',
     fieldType: INPUT_TYPE,
+    onlyNumeric: true,
+    maxLength: 4,
     sm: 4,
   },
   {
@@ -34,6 +37,7 @@ export const basicDataFields = [
     required: true,
     placeholder: 'Συμπληρώστε το μοντέλο οχήματος',
     fieldType: INPUT_TYPE,
+    uppercase: true,
     sm: 4,
   },
   {
@@ -42,6 +46,7 @@ export const basicDataFields = [
     required: true,
     placeholder: 'Συμπληρώστε το μοντέλο οχήματος',
     fieldType: INPUT_TYPE,
+    uppercase: true,
     sm: 4,
   },
 ];

@@ -1,1 +1,2 @@
-export const ADD_VEHICLE_LOCALE_STORAGE_KEY = 'add_vehicle_locale_storage_key';
+export const TOKEN_LOCALE_STORAGE_KEY = 'token';
+export const REFRESH_TOKEN_LOCALE_STORAGE_KEY = 'refresh_token';
