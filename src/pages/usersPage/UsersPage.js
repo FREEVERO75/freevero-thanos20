@@ -80,11 +80,6 @@ export const UsersPage = () => {
 
   const tableColumns = [
     {
-      name: 'Username',
-      selector: row => row.username,
-      sortable: true,
-    },
-    {
       name: 'Όνομα',
       selector: row => row.name,
       sortable: true,

@@ -1,7 +1,7 @@
 import { faEdit, faFloppyDisk } from '@fortawesome/free-solid-svg-icons';
 import { ORANGE } from '../../../constants/colors';
 
-export const FormButtons = ({ onEdit, onCancel }) => [
+export const FormButtons = ({ onEdit, onSave }) => [
   {
     label: 'Επεξεργασία',
     iconLeft: faEdit,
@@ -12,5 +12,6 @@ export const FormButtons = ({ onEdit, onCancel }) => [
     label: 'Αποθήκευση',
     iconRight: faFloppyDisk,
     variant: 'success',
+    onClick: onSave,
   },
 ];

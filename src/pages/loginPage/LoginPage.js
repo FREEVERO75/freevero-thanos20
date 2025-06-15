@@ -5,20 +5,19 @@ import { Input } from '../../components/input/Input';
 import { Button } from '../../components/button/Button';
 import { faRightToBracket } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
-import { ACCOUNT_ROUTE, REGISTER_ROUTE } from '../../constants/paths';
+import { REGISTER_ROUTE, VEHICLE_DASHBOARD_ROUTE } from '../../constants/paths';
 import { useState } from 'react';
 import { validateFields } from '../../utils/utils';
 import { loginService } from '../../services/userService';
 import { useToast } from '../../contexts/ToastContext';
 import { useAuth } from '../../contexts/AuthContext';
-import { width } from '@fortawesome/free-solid-svg-icons/faUserAlt';
 
 export const LoginPage = () => {
   const [formData, setFormData] = useState({
-    username: '',
+    email: '',
     password: '',
   });
-  const fieldsForValidation = ['username', 'password'];
+  const fieldsForValidation = ['email', 'password'];
   const { showError } = useToast();
   const { setAuthState } = useAuth();
   const navigate = useNavigate();
@@ -40,7 +39,7 @@ export const LoginPage = () => {
         localStorage.setItem('token', response?.data?.token);
         localStorage.setItem('refreshToken', response?.data?.refreshToken);
         setAuthState(response?.data?.user);
-        navigate(ACCOUNT_ROUTE);
+        navigate(VEHICLE_DASHBOARD_ROUTE);
       })
       .catch(error => {
         console.log(error);
@@ -62,12 +61,12 @@ export const LoginPage = () => {
         <Row className='w-100'>
           <Col xs={12}>
             <Input
-              label='Όνομα χρήστη'
-              name='username'
-              value={formData.username}
+              label='E-mail'
+              name='email'
+              value={formData.email}
               onChange={handleInputChange}
               required
-              placeholder='Συμπληρώστε το όνομα χρήστη σας'
+              placeholder='Συμπληρώστε το e-mail σας'
             />
           </Col>
         </Row>

@@ -19,7 +19,6 @@ export const EditUserModal = ({
     name: '',
     surname: '',
     email: '',
-    username: '',
     mobileNumber: '',
     address: '',
   });
@@ -28,7 +27,6 @@ export const EditUserModal = ({
   const fieldsForValidation = [
     'name',
     'surname',
-    'username',
     'email',
     'mobileNumber',
     'address',
@@ -127,19 +125,6 @@ export const EditUserModal = ({
           </Col>
         </Row>
         <Row>
-          <Col xs={12} sm={12} md={4} lg={4} xl={4}>
-            <Input
-              label='Όνομα χρήστη'
-              name='username'
-              value={formData.username}
-              onChange={handleInputChange}
-              required
-              placeholder='Συμπληρώστε το όνομα χρήστη'
-              isInvalid={
-                isFieldEmpty('username', emptyFields) && !formData.username
-              }
-            />
-          </Col>
           <Col xs={12} sm={12} md={4} lg={4} xl={4}>
             <Input
               label='Κινητό τηλέφωνο'

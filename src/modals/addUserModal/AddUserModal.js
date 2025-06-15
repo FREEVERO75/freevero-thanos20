@@ -15,7 +15,6 @@ export const AddUserModal = ({ show, handleClose, changeRefreshFlag }) => {
     name: '',
     surname: '',
     email: '',
-    username: '',
     mobileNumber: '',
     address: '',
     password: '',
@@ -27,7 +26,6 @@ export const AddUserModal = ({ show, handleClose, changeRefreshFlag }) => {
     'name',
     'surname',
     'email',
-    'username',
     'mobileNumber',
     'address',
     'password',
@@ -124,19 +122,6 @@ export const AddUserModal = ({ show, handleClose, changeRefreshFlag }) => {
           </Col>
         </Row>
         <Row>
-          <Col xs={12} sm={12} md={4} lg={4} xl={4}>
-            <Input
-              label='Όνομα χρήστη'
-              name='username'
-              value={formData.username}
-              onChange={handleInputChange}
-              required
-              placeholder='Συμπληρώστε το όνομα χρήστη'
-              isInvalid={
-                isFieldEmpty('username', emptyFields) && !formData.username
-              }
-            />
-          </Col>
           <Col xs={12} sm={12} md={4} lg={4} xl={4}>
             <Input
               label='Κινητό τηλέφωνο'

@@ -17,7 +17,6 @@ export const AccountPage = () => {
     name: '',
     surname: '',
     email: '',
-    username: '',
     mobileNumber: '',
     address: '',
   });
@@ -26,7 +25,6 @@ export const AccountPage = () => {
   const fieldsForValidation = [
     'name',
     'surname',
-    'username',
     'email',
     'mobileNumber',
     'address',
@@ -123,20 +121,6 @@ export const AccountPage = () => {
           </Col>
         </Row>
         <Row className='w-100'>
-          <Col xs={12} md={4}>
-            <Input
-              label='Όνομα χρήστη'
-              name='username'
-              value={formData?.username}
-              onChange={handleInputChange}
-              disabled
-              required
-              placeholder='Συμπληρώστε το όνομα χρήστη σας'
-              isInvalid={
-                isFieldEmpty('username', emptyFields) && !formData.username
-              }
-            />
-          </Col>
           <Col xs={12} md={4}>
             <Input
               label='Κινητό τηλέφωνο'

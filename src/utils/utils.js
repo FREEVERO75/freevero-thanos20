@@ -33,3 +33,25 @@ export const isEmptyObject = obj =>
       value === null ||
       (Array.isArray(value) && value.length === 0)
   );
+
+// convert json object to FormData object
+export const convertToFormData = formDataObj => {
+  const data = new FormData();
+
+  Object.entries(formDataObj).forEach(([key, value]) => {
+    if (
+      value instanceof File ||
+      (Array.isArray(value) && value[0] instanceof File)
+    ) {
+      (Array.isArray(value) ? value : [value]).forEach(file => {
+        data.append(key, file); // more than one files
+      });
+    } else if (typeof value === 'object' && value !== null) {
+      data.append(key, JSON.stringify(value));
+    } else if (value !== null && value !== undefined) {
+      data.append(key, value);
+    }
+  });
+
+  return data;
+};

@@ -8,7 +8,8 @@ import { displayFields } from './components/formConfig/displayFields';
 import { FormButtons } from './components/FormButtons';
 
 export const FinalVehiclePage = () => {
-  const { formData, goBackToAddVehiclePage } = useFinalVehiclePageForm();
+  const { formData, goBackToAddVehiclePage, addNewVehicle } =
+    useFinalVehiclePageForm();
 
   return (
     <MainLayout>
@@ -19,7 +20,10 @@ export const FinalVehiclePage = () => {
         content={
           <InfoFields readOnlyFields={displayFields} formData={formData} />
         }
-        buttons={FormButtons({ onEdit: goBackToAddVehiclePage })}
+        buttons={FormButtons({
+          onEdit: goBackToAddVehiclePage,
+          onSave: addNewVehicle,
+        })}
       />
     </MainLayout>
   );

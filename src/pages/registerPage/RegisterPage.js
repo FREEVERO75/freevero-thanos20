@@ -20,7 +20,6 @@ export const RegisterPage = () => {
     name: '',
     surname: '',
     email: '',
-    username: '',
     mobileNumber: '',
     address: '',
     password: '',
@@ -31,7 +30,6 @@ export const RegisterPage = () => {
     'name',
     'surname',
     'email',
-    'username',
     'mobileNumber',
     'address',
     'password',
@@ -123,19 +121,6 @@ export const RegisterPage = () => {
               required
               placeholder='Συμπληρώστε το e-mail σας'
               isInvalid={isFieldEmpty('email', emptyFields) && !formData.email}
-            />
-          </Col>
-          <Col xs={12} md={6}>
-            <Input
-              label='Όνομα χρήστη'
-              name='username'
-              value={formData.username}
-              onChange={handleInputChange}
-              required
-              placeholder='Συμπληρώστε το όνομα χρήστη σας'
-              isInvalid={
-                isFieldEmpty('username', emptyFields) && !formData.username
-              }
             />
           </Col>
         </Row>
