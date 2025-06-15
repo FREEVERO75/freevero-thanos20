@@ -123,8 +123,6 @@ export const RegisterPage = () => {
               isInvalid={isFieldEmpty('email', emptyFields) && !formData.email}
             />
           </Col>
-        </Row>
-        <Row className='w-100'>
           <Col xs={12} md={6}>
             <Input
               label='Κινητό τηλέφωνο'
@@ -140,6 +138,8 @@ export const RegisterPage = () => {
               }
             />
           </Col>
+        </Row>
+        <Row className='w-100'>
           <Col xs={12} md={6}>
             <Input
               label='Διεύθυνση'
@@ -153,8 +153,6 @@ export const RegisterPage = () => {
               }
             />
           </Col>
-        </Row>
-        <Row className='w-100'>
           <Col xs={12} md={6}>
             <Input
               label='Κωδικός πρόσβασης'
@@ -169,6 +167,8 @@ export const RegisterPage = () => {
               }
             />
           </Col>
+        </Row>
+        <Row className='w-100'>
           <Col xs={12} md={6}>
             <Input
               label='Επανάληψη κωδικού πρόσβασης'

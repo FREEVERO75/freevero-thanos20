@@ -1,6 +1,10 @@
 // src/httpService.js
 import axios from 'axios';
 import { hideLoader, showLoader } from '../controllers/loaderController';
+import {
+  REFRESH_TOKEN_LOCALE_STORAGE_KEY,
+  TOKEN_LOCALE_STORAGE_KEY,
+} from '../constants/localeStorageKeys';
 
 // Create an Axios instance
 export const http = axios.create({
@@ -14,7 +18,7 @@ http.interceptors.request.use(
     showLoader();
     // Exclude login/register requests from adding the token
     if (!config.url.includes('/login') && !config.url.includes('/register')) {
-      const token = localStorage.getItem('token');
+      const token = localStorage.getItem(TOKEN_LOCALE_STORAGE_KEY);
       if (token) {
         config.headers.Authorization = `Bearer ${token}`;
       }
@@ -51,7 +55,9 @@ http.interceptors.response.use(
 
     if (response && status === 401 && errorCode === 104) {
       try {
-        const refreshToken = localStorage.getItem('refreshToken');
+        const refreshToken = localStorage.getItem(
+          REFRESH_TOKEN_LOCALE_STORAGE_KEY
+        );
         if (!refreshToken) {
           hideLoader();
           window.location.href = '/login';
@@ -62,7 +68,7 @@ http.interceptors.response.use(
           { refreshToken: refreshToken }
         );
         hideLoader();
-        localStorage.setItem('token', data.accessToken);
+        localStorage.setItem(TOKEN_LOCALE_STORAGE_KEY, data.accessToken);
 
         originalRequest.headers.Authorization = `Bearer ${data.accessToken}`;
 
@@ -70,15 +76,15 @@ http.interceptors.response.use(
       } catch (refreshError) {
         hideLoader();
         console.error('Refresh token expired. Logging out...', refreshError);
-        localStorage.removeItem('token');
-        localStorage.removeItem('refreshToken');
+        localStorage.removeItem(TOKEN_LOCALE_STORAGE_KEY);
+        localStorage.removeItem(REFRESH_TOKEN_LOCALE_STORAGE_KEY);
         window.location.href = '/login';
       }
     }
 
     if (response && status === 403) {
-      localStorage.removeItem('token');
-      localStorage.removeItem('refreshToken');
+      localStorage.removeItem(TOKEN_LOCALE_STORAGE_KEY);
+      localStorage.removeItem(REFRESH_TOKEN_LOCALE_STORAGE_KEY);
       window.location.href = '/login';
     }
 

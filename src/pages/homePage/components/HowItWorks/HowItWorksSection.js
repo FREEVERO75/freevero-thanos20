@@ -39,7 +39,7 @@ export const HowItWorksSection = () => {
             <Col
               key={index}
               md={4}
-              className='d-flex align-items-center justify-content-center flex-column gap-1'
+              className='d-flex align-items-center justify-content-center flex-column gap-1 pt-4'
             >
               <HowItWorksItem
                 icon={item.icon}

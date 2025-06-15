@@ -19,7 +19,7 @@ export const UsersReviewSection = () => {
       </Row>
       <Row>
         {reviews.map((item, index) => (
-          <Col key={index} md={4}>
+          <Col key={index} md={4} className='pt-3'>
             <UserReviewItem review={item.review} />
           </Col>
         ))}

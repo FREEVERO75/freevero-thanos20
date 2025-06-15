@@ -1,25 +1,46 @@
 import { Col, Row } from 'react-bootstrap';
 import { Button } from '../../../components/button/Button';
-import { faEye, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faEye, faPlus, faEdit } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
-import { ADD_VEHICLE_ROUTE } from '../../../constants/paths';
+import {
+  ADD_VEHICLE_ROUTE,
+  EDIT_VEHICLE_ROUTE,
+  VIEW_VEHICLE_ROUTE,
+} from '../../../constants/paths';
+import { LIGHT_ORANGE, ORANGE } from '../../../constants/colors';
 
-export const DashboardButtons = () => {
+export const DashboardButtons = ({ hasVehicle }) => {
   const navigate = useNavigate();
   const dashboardButtons = [
     {
       label: 'Το όχημα μου',
       variant: 'primary',
-      icon: faEye,
-      style: { padding: '1.5rem', fontWeight: 'bold' },
+      iconRight: faEye,
+      onClick: () => navigate(VIEW_VEHICLE_ROUTE),
+      disabled: !hasVehicle,
+      style: { padding: '1.5rem', width: '16rem', fontWeight: 'bold' },
     },
-    {
-      label: 'Προσθήκη οχήματος',
-      variant: 'success',
-      icon: faPlus,
-      onClick: () => navigate(ADD_VEHICLE_ROUTE),
-      style: { padding: '1.5rem', fontWeight: 'bold' },
-    },
+    !hasVehicle
+      ? {
+          label: 'Προσθήκη οχήματος',
+          variant: 'success',
+          icon: faPlus,
+          onClick: () => navigate(ADD_VEHICLE_ROUTE),
+          style: { padding: '1.5rem', width: '16rem', fontWeight: 'bold' },
+        }
+      : {
+          label: 'Επεξεργασία οχήματος',
+          iconRight: faEdit,
+          onClick: () => navigate(EDIT_VEHICLE_ROUTE),
+          style: {
+            padding: '1.5rem',
+            width: '16rem',
+            fontWeight: 'bold',
+            background: ORANGE,
+            borderColor: ORANGE,
+            hoverColor: LIGHT_ORANGE,
+          },
+        },
   ];
 
   return (

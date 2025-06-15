@@ -6,3 +6,5 @@ export const USERS_ROUTE = '/users';
 export const VEHICLE_DASHBOARD_ROUTE = '/dashboard';
 export const ADD_VEHICLE_ROUTE = '/add_vehicle';
 export const FINAL_VEHICLE_ROUTE = '/final_vehicle';
+export const VIEW_VEHICLE_ROUTE = '/view_vehicle';
+export const EDIT_VEHICLE_ROUTE = '/edit_vehicle';

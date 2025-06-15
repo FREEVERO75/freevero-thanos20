@@ -10,9 +10,9 @@ import {
   basicDataFields,
   documents,
   technicalData,
-} from '../formConfig/addVehicleFields';
-import { BLUE, ORANGE, RED } from '../../../../constants/colors';
-import { VEHICLE_DASHBOARD_ROUTE } from '../../../../constants/paths';
+} from '../forms/vehicleFormFields';
+import { BLUE, ORANGE, RED } from '../colors';
+import { VEHICLE_DASHBOARD_ROUTE } from '../paths';
 
 export const vehicleCards = [
   {

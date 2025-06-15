@@ -1,22 +1,26 @@
 import {
   ACCOUNT_ROUTE,
   ADD_VEHICLE_ROUTE,
+  EDIT_VEHICLE_ROUTE,
   FINAL_VEHICLE_ROUTE,
   HOME_ROUTE,
   LOGIN_ROUTE,
   REGISTER_ROUTE,
   USERS_ROUTE,
   VEHICLE_DASHBOARD_ROUTE,
+  VIEW_VEHICLE_ROUTE,
 } from '../constants/paths';
 import { ADMIN } from '../constants/roles';
 import { AccountPage } from '../pages/accountPage/AccountPage';
 import { AddVehiclePage } from '../pages/addVehiclePage/addVehiclePage';
+import { EditVehiclePage } from '../pages/editVehiclePage/EditVehiclePage';
 import { FinalVehiclePage } from '../pages/finalVehiclePage/FinalVehiclePage';
 import { HomePage } from '../pages/homePage/HomePage';
 import { LoginPage } from '../pages/loginPage/LoginPage';
 import { RegisterPage } from '../pages/registerPage/RegisterPage';
 import { UsersPage } from '../pages/usersPage/UsersPage';
 import { VehicleDashboardPage } from '../pages/vehicleDashboardPage/VehicleDashboardPage';
+import { ViewVehiclePage } from '../pages/viewVehiclePage/ViewVehiclePage';
 
 export const routes = [
   { path: HOME_ROUTE, element: <HomePage />, showHeaderAndFooter: false },
@@ -56,6 +60,16 @@ export const routes = [
     element: <FinalVehiclePage />,
     showHeaderAndFooter: true,
     protected: true,
+  },
+  {
+    path: VIEW_VEHICLE_ROUTE,
+    element: <ViewVehiclePage />,
+    showHeaderAndFooter: true,
+  },
+  {
+    path: EDIT_VEHICLE_ROUTE,
+    element: <EditVehiclePage />,
+    showHeaderAndFooter: true,
   },
   { path: '*', element: <HomePage /> },
 ];

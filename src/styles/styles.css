@@ -118,7 +118,7 @@
 }
 
 .dropdown-menu[data-bs-popper] {
-  left: -110px !important;
+  left: -150px !important;
 }
 
 .rdt_Table {

@@ -1,10 +1,11 @@
-import { Col, Row } from 'react-bootstrap';
 import { Logo } from '../../components/logo/Logo';
 import { CardContainer, MainLayout } from '../../styles/styles';
 import { DashboardButtons } from './components/DashboardButtons';
 import { TitleAndSubTitle } from './components/TitleAndSubTitle';
+import { useVehicleDashboardForm } from './hooks/useVehicleDashboardForm';
 
 export const VehicleDashboardPage = () => {
+  const { hasVehicle } = useVehicleDashboardForm();
   return (
     <MainLayout className='d-flex justify-content-center'>
       <CardContainer
@@ -17,7 +18,7 @@ export const VehicleDashboardPage = () => {
       >
         <Logo />
         <TitleAndSubTitle />
-        <DashboardButtons />
+        <DashboardButtons hasVehicle={hasVehicle} />
       </CardContainer>
     </MainLayout>
   );

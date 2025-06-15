@@ -2,13 +2,13 @@ import {
   fuelTypeOptions,
   motorcycleTypeOptions,
   transmissionOptions,
-} from '../../../../constants/selectOptions';
+} from '../selectOptions';
 import {
+  ADDRESS_INPUT,
   CUSTOM_FILE_INPUT,
   INPUT_TYPE,
   SELECT_TYPE,
-  ADDRESS_INPUT,
-} from '../../../../constants/types';
+} from '../types';
 
 export const basicDataFields = [
   {

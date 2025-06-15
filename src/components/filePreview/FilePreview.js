@@ -1,6 +1,6 @@
 import { Image } from 'react-bootstrap';
 
-export const FilePreview = ({ label, files }) => {
+export const FilePreview = ({ label, files, isFromServer = false }) => {
   if (!files || files.length === 0) return null;
 
   return (
@@ -8,20 +8,21 @@ export const FilePreview = ({ label, files }) => {
       <span className='fw-bold'>{label}:</span>
       <div className='d-flex flex-wrap gap-2'>
         {files.map((file, index) => {
-          const isImage = file.type?.startsWith('image/');
-          const url = URL.createObjectURL(file);
+          const src = isFromServer
+            ? `${process.env.REACT_APP_BASE_URL}/uploads/${file}`
+            : URL.createObjectURL(file);
 
-          return isImage ? (
+          const alt = typeof file === 'string' ? file : file.name;
+
+          return (
             <Image
               key={index}
-              src={url}
-              alt={file.name}
+              src={src}
+              alt={alt}
               thumbnail
-              width={200}
-              onLoad={() => URL.revokeObjectURL(url)}
+              width={150}
+              onLoad={() => !isFromServer && URL.revokeObjectURL(src)}
             />
-          ) : (
-            <p key={index}>{file.name}</p>
           );
         })}
       </div>

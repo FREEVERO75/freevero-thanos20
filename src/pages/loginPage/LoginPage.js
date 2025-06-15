@@ -11,6 +11,10 @@ import { validateFields } from '../../utils/utils';
 import { loginService } from '../../services/userService';
 import { useToast } from '../../contexts/ToastContext';
 import { useAuth } from '../../contexts/AuthContext';
+import {
+  REFRESH_TOKEN_LOCALE_STORAGE_KEY,
+  TOKEN_LOCALE_STORAGE_KEY,
+} from '../../constants/localeStorageKeys';
 
 export const LoginPage = () => {
   const [formData, setFormData] = useState({
@@ -36,8 +40,11 @@ export const LoginPage = () => {
     }
     loginService(formData)
       .then(response => {
-        localStorage.setItem('token', response?.data?.token);
-        localStorage.setItem('refreshToken', response?.data?.refreshToken);
+        localStorage.setItem(TOKEN_LOCALE_STORAGE_KEY, response?.data?.token);
+        localStorage.setItem(
+          REFRESH_TOKEN_LOCALE_STORAGE_KEY,
+          response?.data?.refreshToken
+        );
         setAuthState(response?.data?.user);
         navigate(VEHICLE_DASHBOARD_ROUTE);
       })

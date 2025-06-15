@@ -9,3 +9,4 @@ export const GRAY = 'var(--gray)';
 export const GRAY_SECOND = 'var(--gray-second)';
 export const BLUE_DARK = 'var(--blue-dark)';
 export const ORANGE = 'var(--orange)';
+export const LIGHT_ORANGE = 'var(--light-orange)';

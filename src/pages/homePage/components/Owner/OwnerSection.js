@@ -40,7 +40,7 @@ export const OwnerSection = () => {
         </Row>
         <Row>
           {ownerItems.map((item, index) => (
-            <Col key={index} md={4}>
+            <Col key={index} md={4} className='pt-4'>
               <OwnerItem icon={item.icon} description={item.description} />
             </Col>
           ))}

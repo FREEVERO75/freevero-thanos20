@@ -15,7 +15,8 @@ export const CustomFileInput = ({
 }) => {
   const files = formData?.[name] || [];
   const inputRef = useRef(null);
-
+  console.log(files);
+  console.log(files.length);
   const handleClick = () => {
     inputRef.current?.click();
   };
@@ -39,11 +40,13 @@ export const CustomFileInput = ({
 
       <Button label={btnLabel || 'Επιλογή αρχείου'} onClick={handleClick} />
 
-      {files.length > 0 && (
+      {Array.isArray(files) && files.length > 0 ? (
         <span className='fw-bold'>
           Έχετε ανεβάσει {files.length}{' '}
           {files.length === 1 ? 'αρχείο' : 'αρχεία'}
         </span>
+      ) : (
+        <span className='fw-bold'>Έχετε ανεβάσει 1 αρχείο</span>
       )}
     </Form.Group>
   );

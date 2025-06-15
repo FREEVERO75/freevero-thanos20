@@ -1,12 +1,12 @@
-import { MainLayout } from '../../styles/styles';
-import { PageTitle } from '../../components/pageTitle/PageTitle';
-import { VehicleCard } from '../../components/vehicleCard/VehicleCard';
-import { useAddVehicleForm } from './hooks/useAddVehicleForm';
 import { useNavigate } from 'react-router-dom';
-import { FormFields } from '../../components/formFields/FormFields';
+import { PageTitle } from '../../components/pageTitle/PageTitle';
+import { MainLayout } from '../../styles/styles';
+import { useEditVehicleForm } from './hooks/useEditVehicleForm';
 import { vehicleCards } from '../../constants/vehicleCards/vehicleCardsConfig';
+import { VehicleCard } from '../../components/vehicleCard/VehicleCard';
+import { FormFields } from '../../components/formFields/FormFields';
 
-export const AddVehiclePage = () => {
+export const EditVehiclePage = () => {
   const {
     step,
     formData,
@@ -16,7 +16,7 @@ export const AddVehiclePage = () => {
     clearForm,
     goToFinalViewPageAndValidateFields,
     emptyFields,
-  } = useAddVehicleForm();
+  } = useEditVehicleForm();
 
   const navigate = useNavigate();
 
@@ -32,7 +32,7 @@ export const AddVehiclePage = () => {
 
   return (
     <MainLayout>
-      <PageTitle title='Προσθήκη Οχήματος' />
+      <PageTitle title='Επξεργασία Οχήματος' />
       <VehicleCard
         step={step}
         icon={currentStep?.icon}

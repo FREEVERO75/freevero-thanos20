@@ -6,11 +6,13 @@ import { useNavigate } from 'react-router-dom';
 import { REGISTER_ROUTE } from '../../../../constants/paths';
 
 export const CallToActionSection = () => {
+  const isMobile = window.innerWidth < 768;
   const navigate = useNavigate();
   const userBtnStyle = {
     color: PRIMARY_BLUE,
     padding: '1.4rem',
     fontWeight: 'bold',
+    width: isMobile ? '100%' : '15rem',
   };
 
   const ownerBtnStyle = {
@@ -19,6 +21,7 @@ export const CallToActionSection = () => {
     padding: '1.4rem',
     fontWeight: 'bold',
     color: WHITE,
+    width: isMobile ? '100%' : '15rem',
   };
 
   return (
@@ -39,7 +42,7 @@ export const CallToActionSection = () => {
             </h4>
           </Col>
         </Row>
-        <Row className='d-flex align-items-center justify-content-center'>
+        <Row className='d-flex align-items-center justify-content-center gap-2 gap-md-0'>
           <Col xs={12} sm={6}>
             <Button
               label='Δες διαθέσιμα Scooter'
