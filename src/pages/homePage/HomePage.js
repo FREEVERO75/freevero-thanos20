@@ -1,7 +1,7 @@
 import { Footer } from '../../components/footer/Footer';
 import { MainLayout } from '../../styles/styles';
 import { CallToActionSection } from './components/callToActionSection/CallToActionSection';
-import { FrequentQuestionsSection } from '../../components/frequentQuestions/FrequentQuestionsSection';
+import { FrequentQuestionsSection } from './components/frequentQuestions/FrequentQuestionsSection';
 import { HowItWorksSection } from './components/howItWorks/HowItWorksSection';
 import { HeroSection } from './components/hero/HeroSection';
 import { OwnerSection } from './components/owner/OwnerSection';
@@ -22,3 +22,4 @@ export const HomePage = () => {
     </MainLayout>
   );
 };
+
